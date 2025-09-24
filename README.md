@@ -47,7 +47,7 @@ Azad şəkildə istifadə edin, inkişaf etdirin, paylaşın 🌟
 
 ```bash
 # Repository-ni klonlayın
-git clone https://github.com/username/laglix-bot.git
+git clone https://github.com/4gshin/laglix-discord-bot.git
 
 # Layihə qovluğuna daxil olun
 cd laglix-bot
