@@ -23,6 +23,25 @@ Başlamazdan öncə aşağıdakı alətləri sisteminizdə qurun:
 - Git (istəyə görə, kodu rahat çəkmək üçün)  
 
 ---
+## 🗺️ Yol Xəritəsi (Gələcək Yeniliklər)
+
+🌍 Çoxdilli dəstək (!english, !az, və s.)
+
+🎶 Musiqi sistemi (YouTube/Spotify inteqrasiyası)
+
+📊 Daha detallı statistikalar və loglama
+
+🤖 Sadə AI funksiyaları (chat, auto-reply və s.)
+
+## 🤝 Töhfə vermək
+
+Pull Request-lər açıqdır 🚀
+Yeni fikirləriniz varsa, Issues bölməsində paylaşa bilərsiniz.
+
+## 📜 Lisenziya
+
+Bu layihə MIT License altında yayımlanır.
+Azad şəkildə istifadə edin, inkişaf etdirin, paylaşın 🌟
 
 ## 🚀 Quraşdırma və İşə Salma
 
@@ -41,23 +60,3 @@ npm install
 
 # Botu işə salın
 node index.js
-
-🗺️ Yol Xəritəsi (Gələcək Yeniliklər)
-
-🌍 Çoxdilli dəstək (!english, !az, və s.)
-
-🎶 Musiqi sistemi (YouTube/Spotify inteqrasiyası)
-
-📊 Daha detallı statistikalar və loglama
-
-🤖 Sadə AI funksiyaları (chat, auto-reply və s.)
-
-🤝 Töhfə vermək
-
-Pull Request-lər açıqdır 🚀
-Yeni fikirləriniz varsa, Issues bölməsində paylaşa bilərsiniz.
-
-📜 Lisenziya
-
-Bu layihə MIT License altında yayımlanır.
-Azad şəkildə istifadə edin, inkişaf etdirin, paylaşın 🌟
