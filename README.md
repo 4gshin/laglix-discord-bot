@@ -1,62 +1,57 @@
 # 🤖 Laglix Bot
 
-**Laglix** – sadə, funksional və özəlləşdirilə bilən **Discord botu**.  
-İstər dost serverinizdə əyləncə üçün, istər idarə üçün – Laglix sizinlədir 🚀  
+Kiçik Discord communitylər üçün sadə moderasiya botu. Slash commands ilə işləyir (`discord.js` v14).
 
----
+## ✨ Əmrlər
 
-## ✨ Xüsusiyyətlər
-- 🛠️ Sadə və təmiz command sistemi  
-- 🌍 Genişləndirilə bilən funksiya dəstəyi  
-- 🟢 Status (presence) idarəsi  
-- 🔐 Admin yoxlamaları (ID, role və ya permission ilə)  
-- 📌 Gələcəkdə çoxdilli dəstək  
+| Əmr | İcazə | Təsvir |
+|---|---|---|
+| `/ban` | Ban Members | İstifadəçini banlayır (mesaj silmə seçimi ilə) |
+| `/unban` | Ban Members | ID ilə banı qaldırır |
+| `/kick` | Kick Members | Serverdən çıxarır |
+| `/mute` / `/unmute` | Moderate Members | Timeout verir / ləğv edir |
+| `/warn` | Moderate Members | Xəbərdarlıq verir və yadda saxlayır |
+| `/warnings` | Moderate Members | Xəbərdarlıqlara baxır |
+| `/clearwarns` | Moderate Members | Xəbərdarlıqları silir |
+| `/clear` | Manage Messages | 1-100 mesaj silir |
+| `/userinfo` | – | İstifadəçi məlumatı |
+| `/help` | – | Əmrlərin siyahısı |
 
----
+**Təhlükəsizlik:** rol iyerarxiyası yoxlanır (moderator özündən yüksək rola, server sahibinə, özünə və ya bota əmr işlədə bilməz). Cəza zamanı istifadəçiyə DM gedir, `LOG_CHANNEL_ID` verilibsə mod-log kanalına yazılır.
 
-## 🧰 Lazım olan alətlər
-Başlamazdan öncə aşağıdakı alətləri sisteminizdə qurun:
+## 🚀 Quraşdırma
 
-- [Node.js](https://nodejs.org/) (tövsiyə: **v18+**)  
-- [npm](https://www.npmjs.com/) (Node ilə birlikdə gəlir)  
-- Kod editoru (tövsiyə: [Visual Studio Code](https://code.visualstudio.com/))  
-- Git (istəyə görə, kodu rahat çəkmək üçün)  
+Node.js **v18+** lazımdır.
 
----
-## 🗺️ Yol Xəritəsi (Gələcək Yeniliklər)
+```bash
+git clone https://github.com/4gshin/laglix-discord-bot.git
+cd laglix-discord-bot
+npm install
+cp .env.example .env     # sonra .env faylını doldur
+npm run deploy           # slash əmrləri qeydiyyatdan keçir (yalnız ilk dəfə və ya əmr dəyişəndə)
+npm start
+```
 
-🌍 Çoxdilli dəstək (!english, !az, və s.)
+### Botu serverə əlavə etmək
 
-🎶 Musiqi sistemi (YouTube/Spotify inteqrasiyası)
+Developer Portal → OAuth2 → URL Generator:
+- Scopes: `bot`, `applications.commands`
+- Bot Permissions: Ban Members, Kick Members, Moderate Members, Manage Messages, View Channels, Send Messages, Embed Links
 
-📊 Daha detallı statistikalar və loglama
+Server ayarlarında **Laglix rolunu moderasiya edəcəyi rolların üstünə çək**, əks halda ban/kick/mute işləməz.
 
-🤖 Sadə AI funksiyaları (chat, auto-reply və s.)
+## 📁 Struktur
 
-## 🤝 Töhfə vermək
+```
+index.js              # botun giriş nöqtəsi
+deploy-commands.js    # slash əmrlərin qeydiyyatı
+commands/             # hər əmr ayrı fayl
+utils/                # yardımçı funksiyalar (iyerarxiya, log, warn saxlanması)
+data/                 # warnings.json (avtomatik yaranır, Git-ə düşmür)
+```
 
-Pull Request-lər açıqdır 🚀
-Yeni fikirləriniz varsa, Issues bölməsində paylaşa bilərsiniz.
+Yeni əmr əlavə etmək üçün `commands/` qovluğunda `data` və `execute` ixrac edən fayl yaz, sonra `npm run deploy` işlət.
 
 ## 📜 Lisenziya
 
-Bu layihə MIT License altında yayımlanır.
-Azad şəkildə istifadə edin, inkişaf etdirin, paylaşın 🌟
-
-## 🚀 Quraşdırma və İşə Salma
-
-```bash
-# Repository-ni klonlayın
-git clone https://github.com/4gshin/laglix-discord-bot.git
-
-# Layihə qovluğuna daxil olun
-cd laglix-bot
-
-# Lazım olan paketləri yükləyin
-npm install
-
-# Config faylınızı düzəldin (token və s.)
-# config.json nümunəsini izləyin
-
-# Botu işə salın
-node index.js
+MIT
