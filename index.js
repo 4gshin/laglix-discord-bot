@@ -17,7 +17,7 @@ for (const cmd of loadCommands()) client.commands.set(cmd.data.name, cmd);
 client.once(Events.ClientReady, c => {
   console.log(`🧠 ${c.user.tag} sistemə qoşuldu. ${client.commands.size} əmr yükləndi.`);
   c.user.setPresence({
-    activities: [{ name: 'Serveri qoruyur 🛡️', type: ActivityType.Playing }],
+    activities: [{ name: 'Fəaliyyətdə 🛡️', type: ActivityType.Playing }],
     status: 'dnd'
   });
 });
