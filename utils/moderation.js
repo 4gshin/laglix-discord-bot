@@ -2,7 +2,9 @@ const { EmbedBuilder, MessageFlags } = require('discord.js');
 
 // Yalnız əmri yazan adama görünən xəta mesajı
 function fail(interaction, msg) {
-  return interaction.reply({ content: `❌ ${msg}`, flags: MessageFlags.Ephemeral });
+  const payload = { content: `❌ ${msg}` };
+  if (interaction.deferred || interaction.replied) return interaction.editReply(payload);
+  return interaction.reply({ ...payload, flags: MessageFlags.Ephemeral });
 }
 
 // Rol iyerarxiyası yoxlaması. Problem varsa mesaj qaytarır, yoxdursa null.

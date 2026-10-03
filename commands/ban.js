@@ -26,7 +26,7 @@ module.exports = {
       if (err) return fail(interaction, err);
       if (!member.bannable) return fail(interaction, 'Bu istifadəçini banlamaq mümkün deyil.');
     }
-
+    await interaction.deferReply();
     await dmUser(user, `🔨 **${interaction.guild.name}** serverindən qadağan edildin.\nSəbəb: ${reason}`);
 
     try {
@@ -39,7 +39,7 @@ module.exports = {
       return fail(interaction, 'Ban alınmadı. Botun "Ban Members" icazəsini yoxla.');
     }
 
-    await interaction.reply(`🔨 **${user.username}** serverdən qadağan edildi. Səbəb: ${reason}`);
+    await interaction.editReply(`🔨 **${user.username}** serverdən qadağan edildi. Səbəb: ${reason}`);
     await sendLog(
       interaction.guild,
       logEmbed({ title: '🔨 Ban', color: 0xe74c3c, moderator: interaction.user, target: user, reason })

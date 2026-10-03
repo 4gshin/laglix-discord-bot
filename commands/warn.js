@@ -24,9 +24,9 @@ module.exports = {
 
     const total = addWarning(interaction.guildId, user.id, { moderatorId: interaction.user.id, reason });
 
-    await dmUser(user, `⚠️ **${interaction.guild.name}** serverində xəbərdarlıq aldın.\nSəbəb: ${reason}`);
-    await interaction.reply(`⚠️ **${user.username}** istifadəçisinə xəbərdarlıq verildi (cəmi: ${total}). Səbəb: ${reason}`);
-    await sendLog(
+await interaction.reply(`⚠️ **${user.username}** istifadəçisinə xəbərdarlıq verildi (cəmi: ${total}). Səbəb: ${reason}`);
+await dmUser(user, `⚠️ **${interaction.guild.name}** serverində xəbərdarlıq aldın.\nSəbəb: ${reason}`);
+await sendLog(
       interaction.guild,
       logEmbed({
         title: '⚠️ Warn',

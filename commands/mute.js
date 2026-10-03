@@ -31,9 +31,8 @@ module.exports = {
       console.error(e);
       return fail(interaction, 'Mute alınmadı. Botun "Moderate Members" icazəsini yoxla.');
     }
-
-    await dmUser(user, `🔇 **${interaction.guild.name}** serverində ${minutes} dəqiqəlik susdurulmusan.\nSəbəb: ${reason}`);
     await interaction.reply(`🔇 **${user.username}** ${minutes} dəqiqəlik susduruldu. Səbəb: ${reason}`);
+    await dmUser(user, `🔇 **${interaction.guild.name}** serverində ${minutes} dəqiqəlik susdurulmusan.\nSəbəb: ${reason}`);
     await sendLog(
       interaction.guild,
       logEmbed({

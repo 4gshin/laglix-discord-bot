@@ -14,12 +14,26 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
 for (const cmd of loadCommands()) client.commands.set(cmd.data.name, cmd);
 
+// Presence mətnləri. Hər biri funksiyadır ki, sayğaclar həmişə təzə olsun.
+const totalMembers = () => client.guilds.cache.reduce((sum, g) => sum + g.memberCount, 0);
+
+const presences = [
+  () => ({ name: '/help yaz ', type: ActivityType.Playing }),
+  () => ({ name: `${client.guilds.cache.size} serveri`, type: ActivityType.Watching }),
+  () => ({ name: `${totalMembers()} üzvü`, type: ActivityType.Watching }),
+  () => ({ name: 'custom', state: 'Fəaliyyətdə🛡️', type: ActivityType.Custom })
+];
+
 client.once(Events.ClientReady, c => {
   console.log(`🧠 ${c.user.tag} sistemə qoşuldu. ${client.commands.size} əmr yükləndi.`);
-  c.user.setPresence({
-    activities: [{ name: 'Fəaliyyətdə 🛡️', type: ActivityType.Playing }],
-    status: 'dnd'
-  });
+
+  let i = 0;
+  const update = () => {
+    c.user.setPresence({ activities: [presences[i % presences.length]()], status: 'online' });
+    i++;
+  };
+  update();
+  setInterval(update, 30_000); // 30 saniyədən tez qoyma, Discord limit qoyur
 });
 
 client.on(Events.InteractionCreate, async interaction => {
